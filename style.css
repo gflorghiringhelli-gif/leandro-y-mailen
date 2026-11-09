@@ -1,0 +1,227 @@
+:root {
+  --bg-cream: #F8F7F2;      
+  --bg-white: #FFFFFF;      
+  --green-light: #9CA986;   
+  --green-button: #838661;  /* Nuevo tono verdecito solicitado */
+  --green-dark: #4A5342;    
+  --line-gold: #D4CBB8;     
+  
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-cursive: 'Pinyon Script', cursive; 
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+  background-color: var(--bg-white);
+  color: var(--green-dark); 
+  font-family: var(--font-sans); 
+  text-align: center; 
+  overflow-x: hidden !important; 
+  width: 100vw;
+}
+
+#seccion-final { background-color: var(--bg-white); }
+.section-bg-cream { background-color: var(--bg-cream); }
+.bloque-contenido-general { padding: 20px 0 0 0; }
+.section-pad { padding: 50px 25px; max-width: 480px; margin: 0 auto; }
+.oculto { display: none; }
+.text-center { text-align: center; }
+
+/* PORTADA */
+.hero-section {
+  position: relative; width: 100%; height: 100vh; min-height: 550px; background: var(--bg-white); 
+}
+#imgPortada { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-overlay-gradient {
+  position: absolute; inset: 0; 
+  background: linear-gradient(to top, rgba(74, 83, 66, 0.75) 0%, rgba(74, 83, 66, 0.15) 45%, transparent 100%);
+}
+.hero-text-content {
+  position: absolute; bottom: 60px; left: 0; right: 0; padding: 0 20px; z-index: 2; text-align: center;
+}
+.names-title {
+  font-family: var(--font-cursive); font-size: 4.8rem; color: var(--bg-white); line-height: 1; text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+}
+.subtitle-cover {
+  font-family: var(--font-sans); font-size: 0.95rem; letter-spacing: 5px; color: var(--bg-cream); text-transform: uppercase; margin-top: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* TEXTOS GENERALES */
+.wedding-message-text { font-family: var(--font-serif); font-size: 1.35rem; color: var(--green-dark); line-height: 1.6; }
+.italic-text { font-style: italic; }
+.subtitle-serif { font-family: var(--font-serif); font-size: 1.1rem; letter-spacing: 4px; color: var(--green-dark); text-transform: uppercase; }
+.title-serif-large { font-family: var(--font-serif); font-size: 1.8rem; letter-spacing: 4px; color: var(--green-dark); text-transform: uppercase; font-weight: 500; }
+.names-script-main { font-family: var(--font-cursive); font-size: 4.5rem; color: var(--green-dark); line-height: 0.9; font-weight: normal; }
+
+/* LÍNEAS SEPARADORAS */
+.separator-line { width: 50px; height: 1px; background-color: var(--line-gold); margin-left: auto; margin-right: auto; }
+.dashed-line { width: 100%; height: 1px; border-bottom: 1px dashed var(--line-gold); }
+
+/* SECCIÓN PADRES */
+.parents-container { display: flex; flex-direction: column; gap: 20px; text-align: left; }
+.parent-block { border-left: 2px solid var(--line-gold); padding-left: 15px; }
+.padres-label { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 3px; color: var(--green-light); text-transform: uppercase; font-weight: 500; }
+.padres-nombres { font-family: var(--font-serif); font-size: 1.25rem; color: var(--green-dark); margin-top: 4px; }
+
+/* SAVE THE DATE (EFECTO FLIP AL TOCAR) */
+.tap-circles-wrapper { display: flex; justify-content: center; align-items: center; gap: 15px; perspective: 1000px; }
+
+.circle-tap-card {
+  position: relative;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.circle-tap-card.revelado { transform: rotateY(180deg); }
+
+.circle-front, .circle-back {
+  position: absolute;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--green-light);
+  background: var(--bg-white);
+}
+
+.circle-front {
+  font-family: var(--font-serif); font-size: 1rem; color: var(--green-dark); letter-spacing: 2px;
+}
+
+.circle-back {
+  transform: rotateY(180deg);
+  font-family: var(--font-serif); font-size: 2rem; font-weight: 500; color: var(--green-dark);
+}
+
+.std-revealed-info { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.8s ease; margin-top: 0; }
+.std-revealed-info.show-revealed { max-height: 300px; opacity: 1; }
+
+/* CUENTA REGRESIVA */
+.countdown-container { display: flex; justify-content: center; gap: 10px; }
+.time-box { background: var(--bg-white); border: 1px solid var(--line-gold); padding: 12px 8px; min-width: 65px; }
+.time-box span { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 500; color: var(--green-dark); display: block; line-height: 1; }
+.time-box small { font-family: var(--font-sans); font-size: 0.55rem; letter-spacing: 2px; color: var(--green-light); margin-top: 6px; display: block; }
+
+/* CARRUSEL */
+.carousel-container { position: relative; width: 100%; overflow: hidden; }
+.carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; width: 100%; scroll-behavior: smooth; gap: 15px; }
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-img { width: 85%; flex-shrink: 0; height: 420px; object-fit: cover; display: block; scroll-snap-align: center; }
+
+/* UBICACIONES & CRONOGRAMA */
+.location-card { text-align: center; }
+.location-icon-circle { width: 60px; height: 60px; border-radius: 50%; background-color: var(--green-light); color: var(--bg-white); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto; }
+.location-title { font-family: var(--font-serif); font-size: 1.5rem; color: var(--green-dark); font-weight: 500; }
+.location-date { font-family: var(--font-serif); font-size: 1.35rem; color: var(--green-light); }
+.location-place { font-family: var(--font-serif); font-size: 1.15rem; color: var(--green-dark); }
+
+.mini-timeline {
+  display: flex; flex-direction: column; gap: 12px; margin-top: 20px; padding: 20px 0;
+  border-top: 1px dashed var(--line-gold); border-bottom: 1px dashed var(--line-gold);
+}
+.mini-time-item { display: flex; align-items: center; justify-content: flex-start; gap: 15px; padding: 0 10px;}
+.time-badge {
+  font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; color: var(--green-dark);
+  background: var(--bg-white); border: 1px solid var(--line-gold); padding: 5px 8px; border-radius: 4px; min-width: 75px; text-align: center;
+}
+.time-desc { font-family: var(--font-serif); font-size: 1.25rem; color: var(--green-dark); text-align: left; }
+
+/* DRESS CODE */
+.dress-code-box { background: var(--bg-white); border: 1px solid var(--line-gold); padding: 25px; }
+.dress-badge { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 5px; font-weight: 500; color: var(--green-dark); }
+
+/* SUGERENCIA DE REGALO */
+.regalo-box-outline { border: 1px solid var(--line-gold); background: var(--bg-white); padding: 30px 20px; position: relative; margin-top: 20px; }
+.regalo-tab-top { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background-color: var(--green-button); color: var(--bg-white); padding: 6px 16px; font-size: 0.65rem; letter-spacing: 3px; font-family: var(--font-sans); }
+.alias-box-inner { border: 1px solid var(--line-gold); padding: 30px 20px 20px 20px; position: relative; text-align: left; }
+.alias-tab-top { position: absolute; top: -14px; left: 20px; background-color: var(--bg-cream); border: 1px solid var(--line-gold); color: var(--green-dark); padding: 6px 12px; font-size: 0.6rem; letter-spacing: 2px; font-family: var(--font-sans); }
+.alias-content-flex { display: flex; justify-content: space-between; align-items: center; }
+.alias-label-small { font-size: 0.65rem; letter-spacing: 2px; color: var(--green-light); }
+.alias-number-big { font-family: var(--font-serif); font-size: 1.6rem; color: var(--green-dark); font-weight: 600; }
+.alias-titular { font-family: var(--font-serif); font-size: 1.1rem; color: var(--green-dark); }
+
+/* MURO DE DESEOS */
+.guestbook-box { background: var(--bg-white); border: 1px solid var(--line-gold); padding: 25px 20px; }
+.input-minimal, .textarea-minimal {
+  width: 100%; padding: 14px; border: 1px solid var(--line-gold); background: var(--bg-cream);
+  font-family: var(--font-sans); font-size: 0.85rem; color: var(--green-dark); outline: none;
+}
+.textarea-minimal { min-height: 90px; resize: none; }
+.input-minimal::placeholder, .textarea-minimal::placeholder { color: #b5b1a3; }
+
+/* BOTONES BLOQUE CON EL NUEVO COLOR #838661 */
+.btn-block-green {
+  display: block; width: 100%; background-color: var(--green-button); color: var(--bg-white); padding: 16px;
+  font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 3px; text-decoration: none; text-transform: uppercase; border: none; transition: opacity 0.3s; cursor: pointer;
+}
+.btn-block-green:hover { opacity: 0.85; }
+.btn-copy-green { background-color: var(--green-button); color: var(--bg-white); border: none; padding: 10px 18px; font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 2px; cursor: pointer; }
+
+/* FOOTER AJUSTADO */
+.footer-end-section { padding-bottom: 60px; }
+
+.footer-small-caps { 
+  font-family: var(--font-sans); 
+  font-size: 0.7rem; 
+  letter-spacing: 4px; 
+  color: var(--green-light); 
+}
+
+/* ¡Les esperamos! más pequeño y con letra separada */
+.footer-esperamos {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--green-dark);
+  text-transform: uppercase;
+}
+
+.footer-small-italic { 
+  font-family: var(--font-serif); 
+  font-size: 1.2rem; 
+  font-style: italic; 
+  color: var(--green-light); 
+}
+
+/* Nombres de los novios en cursiva (Pinyon Script) */
+.names-script-medium { 
+  font-family: var(--font-cursive); 
+  font-size: 3.5rem; 
+  font-weight: normal; 
+  color: var(--green-dark); 
+  line-height: 1;
+}
+
+.footer-date-line { display: flex; align-items: center; justify-content: center; gap: 15px; }
+.line-side { width: 40px; height: 1px; background-color: var(--line-gold); }
+.footer-date-line p { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 5px; color: var(--green-light); }
+.credits-text { font-family: var(--font-sans); font-size: 0.55rem; letter-spacing: 4px; color: var(--line-gold); }
+
+/* EXTRAS */
+.music-btn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--green-button); color: var(--bg-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 4999; cursor: pointer; display: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--green-button); color: var(--bg-white); padding: 12px 26px; font-size: 0.75rem; z-index: 9999; opacity: 0; transition: all 0.4s ease; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+#contenedor-principal { position: fixed; inset: 0; z-index: 5000; background: var(--bg-cream); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+#imgSobreEstetica { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; transition: opacity 0.5s ease; }
+#videoSobre { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: none; }
+#capa-boton { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); z-index: 5001; width: 90%; max-width: 320px; }
+.boton-elegante-inicio { background: var(--bg-white); color: var(--green-dark); padding: 18px 30px; font-size: 0.75rem; letter-spacing: 4px; font-weight: 500; text-transform: uppercase; border: 1px solid var(--green-light); }
+.reveal { opacity: 0; transform: translateY(25px); transition: all 0.8s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.mt-5 { margin-top: 5px; } .mt-10 { margin-top: 10px; } .mt-15 { margin-top: 15px; } .mt-20 { margin-top: 20px; } .mt-25 { margin-top: 25px; } .mt-30 { margin-top: 30px; } .mb-15 { margin-bottom: 15px; } .mb-20 { margin-bottom: 20px; } .px-10 { padding: 0 10px; }
+
+/* FECHA RSVP DESTACADA */
+.rsvp-date-big {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  letter-spacing: 1px;
+}

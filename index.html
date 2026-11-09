@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nuestra Boda · Leandro y Mailen</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="toast" class="toast">¡Alias copiado! 📋✨</div>
+
+    <!-- MÚSICA INTERACTIVA -->
+    <audio id="musicaInvitacion" preload="auto" loop>
+        <source src="img/musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-toggle" class="music-btn" onclick="toggleMusic()">
+        <i class="fa-solid fa-music"></i>
+    </div>
+    
+    <!-- INTRO CINEMATOGRÁFICA -->
+    <div id="contenedor-principal" onclick="activarInvitacion()">
+        <video id="videoSobre" playsinline muted preload="auto">
+            <source src="img/1.mp4" type="video/mp4">
+        </video>
+        <img src="img/sobre.png" alt="Sobre Boda" id="imgSobreEstetica">
+        
+        <div id="capa-boton">
+            <div class="boton-elegante-inicio" id="btn-toca-abrir">
+                <i class="fa-solid fa-envelope-open-text"></i> Tocar para abrir
+            </div>
+        </div>
+    </div>
+
+    <!-- INVITACIÓN WEB BODA -->
+    <div id="seccion-final" class="oculto">
+
+        <!-- PORTADA -->
+        <header class="hero-section">
+            <img src="img/portada.png" alt="Leandro y Mailen" id="imgPortada">
+            <div class="hero-overlay-gradient"></div>
+            <div class="hero-text-content reveal active">
+                <h1 class="names-title">Leandro y Mailen</h1>
+                <p class="subtitle-cover">Nos casamos!</p>
+            </div>
+        </header>
+
+        <div class="bloque-contenido-general">
+            
+            <!-- MENSAJE Y PADRES -->
+            <section class="section-pad reveal text-center">
+                
+                <p class="wedding-message-text mt-10">
+                    Este día tan especial queremos rodearnos de nuestra familia y amigos para celebrar el gran amor que nos une.
+                </p>
+                <div class="separator-line mt-20 mb-20"></div>
+                
+                <h3 class="subtitle-serif">JUNTO A NUESTROS<br>PADRES</h3>
+
+                <div class="parents-container mt-25">
+                    <div class="parent-block">
+                        <p class="padres-label">PADRES DE LA NOVIA</p>
+                        <p class="padres-nombres">Aníbal Gomez & Alicia Lezcano</p>
+                    </div>
+                    <div class="parent-block">
+                        <p class="padres-label">PADRES DEL NOVIO</p>
+                        <p class="padres-nombres">Daniel Klekoc & Natalia Lischuk</p>
+                    </div>
+                </div>
+
+                <div class="separator-line mt-25 mb-20"></div>
+                <p class="wedding-message-text italic-text">
+                    Nos encantaría compartir este momento tan especial con vos.
+                </p>
+                <div class="dashed-line mt-20 mb-20"></div>
+
+                <h1 class="names-script-main">Leandro &<br>Mailen</h1>
+                
+            </section>
+
+            <!-- SAVE THE DATE (VOLTEO AL TOCAR) -->
+            <section class="section-pad reveal text-center section-bg-cream">
+                <h2 class="title-serif-large">SAVE THE DATE</h2>
+                <p class="wedding-message-text italic-text mt-10">Toca los 3 círculos botánicos para revelar la fecha:</p>
+                
+                <div class="tap-circles-wrapper mt-25">
+                    <div class="circle-tap-card" onclick="revelarFecha(this)">
+                        <div class="circle-front">TOCA</div>
+                        <div class="circle-back">02</div>
+                    </div>
+                    <div class="circle-tap-card" onclick="revelarFecha(this)">
+                        <div class="circle-front">TOCA</div>
+                        <div class="circle-back">01</div>
+                    </div>
+                    <div class="circle-tap-card" onclick="revelarFecha(this)">
+                        <div class="circle-front">TOCA</div>
+                        <div class="circle-back">27</div>
+                    </div>
+                </div>
+
+                <div id="fecha-revelada" class="std-revealed-info">
+                    <div class="countdown-container mt-30">
+                        <div class="time-box"><span id="dias">00</span><small>DÍAS</small></div>
+                        <div class="time-box"><span id="horas">00</span><small>HS</small></div>
+                        <div class="time-box"><span id="minutos">00</span><small>MIN</small></div>
+                        <div class="time-box"><span id="segundos">00</span><small>SEG</small></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GALERÍA "NUESTRA HISTORIA" -->
+            <section class="section-pad reveal text-center">
+                <h2 class="title-serif-large">NUESTRA HISTORIA</h2>
+                
+                <div class="carousel-container mt-20">
+                    <div class="carousel-track">
+                        <img src="img/foto1.png" alt="Nosotros" class="carousel-img">
+                        <img src="img/foto2.png" alt="Nosotros" class="carousel-img">
+                    </div>
+                </div>
+            </section>
+
+            <!-- UBICACIONES (MINI CRONOGRAMA) -->
+            <section class="section-pad reveal text-center section-bg-cream">
+                <h2 class="title-serif-large">UBICACIONES</h2>
+
+                <div class="location-card mt-25">
+                    <div class="location-icon-circle"><i class="fa-solid fa-church"></i></div>
+                    <h3 class="location-title mt-15">Civil y Ceremonia Religiosa</h3>
+                    <p class="location-date italic-text mt-5">02 de Enero de 2027</p>
+                    <p class="location-place mt-10">Iglesia Evangélica Bautista de San Luis del Paraná</p>
+                    
+                    <div class="mini-timeline mt-20">
+                        <div class="mini-time-item">
+                            <span class="time-badge">18:30 HS</span>
+                            <span class="time-desc">Recepción</span>
+                        </div>
+                        <div class="mini-time-item">
+                            <span class="time-badge">19:00 HS</span>
+                            <span class="time-desc">Ceremonia Religiosa</span>
+                        </div>
+                        <div class="mini-time-item">
+                            <span class="time-badge">19:40 HS</span>
+                            <span class="time-desc">Ceremonia Civil</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://maps.app.goo.gl/SferYedUg53eBPvH7" target="_blank" class="btn-block-green mt-20">
+                        <i class="fa-solid fa-map-location-dot"></i> GOOGLE MAPS
+                    </a>
+                </div>
+            </section>
+            
+            <!-- DRESS CODE -->
+            <section class="section-pad reveal text-center">
+                <h2 class="title-serif-large">DRESS CODE</h2>
+                <p class="wedding-message-text italic-text mt-10">Código de vestimenta</p>
+                <div class="dress-code-box mt-20">
+                    <p class="dress-badge">ELEGANTE</p>
+                </div>
+            </section>
+
+            <!-- SUGERENCIA DE REGALO (SIN SOBRE FÍSICO) -->
+            <section class="section-pad reveal text-center section-bg-cream">
+                <div class="regalo-box-outline">
+                    <div class="regalo-tab-top">DETALLE CON AMOR</div>
+                    <h2 class="title-serif-large mt-20">SUGERENCIA DE<br>REGALO</h2>
+                    <p class="wedding-message-text italic-text mt-15 mb-20 px-10">
+                        Lo más importante para nosotros es compartir este día con ustedes.
+                    </p>
+                    
+                    <div class="alias-box-inner">
+                        <div class="alias-tab-top"><i class="fa-solid fa-money-bill-transfer"></i> TRANSFERENCIA / ALIAS</div>
+                        
+                        <div class="alias-content-flex">
+                            <div class="alias-text-left">
+                                <p class="alias-label-small">ALIAS BANCARIO</p>
+                                <p class="alias-number-big">0973529164</p>
+                            </div>
+                            <button class="btn-copy-green" onclick="copiarAlias('0973529164')">
+                                <i class="fa-solid fa-copy"></i> COPIAR
+                            </button>
+                        </div>
+                        <div class="dashed-line mt-15 mb-15"></div>
+                        <p class="alias-titular">Titular: Leandro y Mailen</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MURO DE DESEOS (GUESTBOOK) -->
+            <section class="section-pad reveal text-center">
+                <h2 class="title-serif-large">MURO DE DESEOS</h2>
+                <p class="wedding-message-text italic-text mt-10">Déjanos un mensaje para el recuerdo</p>
+                
+                <div class="guestbook-box mt-20">
+                    <form id="guestbook-form">
+                        <input type="text" id="guestName" class="input-minimal" placeholder="Tu nombre" required>
+                        <textarea id="guestMessage" class="textarea-minimal mt-10" placeholder="Escribe tus buenos deseos aquí..." required></textarea>
+                        <button type="button" class="btn-block-green mt-15" onclick="enviarMensaje(this)">DEJAR MENSAJE</button>
+                    </form>
+                </div>
+            </section>
+
+           <!-- RSVP -->
+            <section class="section-pad reveal text-center section-bg-cream">
+                <h2 class="title-serif-large">RSVP</h2>
+                <p class="wedding-message-text mt-15">
+                    Por favor, confirmá tu asistencia antes del:
+                </p>
+                <p class="rsvp-date-big mt-5">
+                    02 de Diciembre de 2026
+                </p>
+
+                <a href="https://wa.me/595973529164?text=¡Hola%20Leandro!%20Confirmo%20mi%20asistencia%20a%20su%20boda%20💍" class="btn-block-green mt-25" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> CONFIRMAR AL NOVIO
+                </a>
+                <a href="https://wa.me/595994506098?text=¡Hola%20Mailen!%20Confirmo%20mi%20asistencia%20a%20su%20boda%20💍" class="btn-block-green mt-15" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> CONFIRMAR A LA NOVIA
+                </a>
+            </section>
+
+           <!-- FOOTER CIERRE -->
+            <section class="section-pad reveal text-center footer-end-section">
+                <p class="footer-small-caps mt-20">CON PROFUNDO AMOR</p>
+                <h2 class="footer-esperamos mt-10">¡Les esperamos!</h2>
+                <p class="footer-small-italic mt-10">con cariño</p>
+                <h2 class="names-script-medium mt-10">Leandro & Mailen <i class="fa-solid fa-heart" style="font-size: 0.5rem; color: var(--green-button);"></i></h2>
+                
+                <div class="footer-date-line mt-20">
+                    <div class="line-side"></div>
+                    <p>02 · 01 · 2027</p>
+                    <div class="line-side"></div>
+                </div>
+
+                <p class="credits-text mt-30"><i class="fa-solid fa-gem"></i> GHISA DIGITAL · Tel: 0981 228 720</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
